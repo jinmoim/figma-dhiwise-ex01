@@ -1,20 +1,19 @@
-// ignore_for_file: must_be_immutable
-
 part of 'dashboard_bloc.dart';
 
 /// Represents the state of Dashboard in the application.
-class DashboardState extends Equatable {
-  DashboardState({this.dashboardModelObj});
+// @immutable
+final class DashboardState extends Equatable {
+  const DashboardState({
+    this.url,
+    this.videoPlayerController,
+  });
 
-  DashboardModel? dashboardModelObj;
+  final String? url;
+  final VideoPlayerController? videoPlayerController;
+
+  DashboardState.playing({this.url, required this.videoPlayerController});
+  DashboardState.paused({this.url, required this.videoPlayerController});
 
   @override
-  List<Object?> get props => [
-        dashboardModelObj,
-      ];
-  DashboardState copyWith({DashboardModel? dashboardModelObj}) {
-    return DashboardState(
-      dashboardModelObj: dashboardModelObj ?? this.dashboardModelObj,
-    );
-  }
+  List<Object?> get props => [];
 }
