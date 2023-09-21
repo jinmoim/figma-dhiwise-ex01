@@ -1,7 +1,6 @@
 part of 'dashboard_bloc.dart';
 
 /// Represents the state of Dashboard in the application.
-// @immutable
 final class DashboardState extends Equatable {
   const DashboardState({
     this.url,

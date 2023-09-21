@@ -1,0 +1,44 @@
+query Product($id: Int!) {
+  product(id: $id) {
+    id
+    name
+    info
+    price
+  }
+}
+
+query GetAllProducts {
+  list {
+    id
+    name
+    info
+    price
+  }
+}
+
+mutation CreateProduct($name: String!, $info: String, $price: Float!) {
+  create(name: $name, info: $info, price: $price) {
+    id
+    name
+    info
+    price
+  }
+}
+
+mutation UpdateProduct($id: Int!, $name: String!, $info: String, $price: Float!) {
+  update(id: $id, name: $name, info: $info, price: $price) {
+    id
+    name
+    info
+    price
+  }
+}
+
+mutation DeleteProduct($id: Int!) {
+  delete(id: $id) {
+    id
+    name
+    info
+    price
+  }
+}

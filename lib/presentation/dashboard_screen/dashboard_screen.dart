@@ -1,3 +1,5 @@
+import 'package:figma_dhiwise_ex01/presentation/dashboard_screen/product.graphql.dart';
+
 import 'bloc/dashboard_bloc.dart';
 import 'models/dashboard_model.dart';
 import 'package:figma_dhiwise_ex01/core/app_export.dart';
@@ -34,17 +36,29 @@ class DashboardScreen extends StatelessWidget {
                   SizedBox(height: 20.v),
                   Expanded(
                     child: SingleChildScrollView(
-                      child: Container(
-                        height: 292.v,
-                        width: double.maxFinite,
-                        margin: EdgeInsets.only(bottom: 730.v),
-                        decoration: BoxDecoration(
-                          color: appTheme.blueGray100,
-                        ),
-                        child: videoPlayerController != null
-                            ? VideoPlayer(videoPlayerController)
-                            : Container(),
-                      ),
+                      child: Column(
+                        children: [
+                          Container(
+                            height: 292.v,
+                            width: double.maxFinite,
+                            // margin: EdgeInsets.only(bottom: 730.v),
+                            decoration: BoxDecoration(
+                              color: appTheme.blueGray100,
+                            ),
+                            child: videoPlayerController != null
+                                ? VideoPlayer(videoPlayerController)
+                                : Container(),
+                          ),
+                          Query$GetAllProducts$Widget(
+                            builder: (result, {refetch, fetchMore}) {
+                              if (result.isLoading || result.hasException) {
+                                return Text("Loading...");
+                              }
+                              return Text(result.data?.toString() ?? "Something went wrong!");
+                            }
+                          )
+                        ]
+                      )
                     ),
                   ),
                 ],

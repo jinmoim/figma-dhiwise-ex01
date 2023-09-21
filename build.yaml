@@ -1,0 +1,14 @@
+targets:
+  $default:
+    sources:
+      - pubspec.yaml
+      - $package$
+      - lib/**
+      - graphql/**
+    builders:
+      graphql_codegen:
+        options:
+          addTypename: false
+          clients:
+            - graphql
+            - graphql_flutter
